@@ -12,7 +12,7 @@ function getNotes(data) {
 $(document).on("click", "#goScrape", function() {
 	$.ajax({
 		method: "GET",
-		UR: "/scrape",
+		url: "/scrape",
 	})
 .done(function(data) {
 	$.getJSON("/articles", function(data) {
@@ -40,7 +40,7 @@ $(document).on('click', 'p', function(){
       $('#notes').append('<h2>' + data.title + '</h2>'); 
       $('#notes').append('<textarea id="bodyinput"></textarea>'); 
       $('#notes').append('<button data-id="' + data._id + '" id="saveNote" class="button">Post it!</button>');
-      $('#notes').append('<button data-id="' + data._id + '" id="deleteAllNotes" class="button">Send all notes to the cornfield!</button>');
+      $('#notes').append('<button data-id="' + data._id + '" id="deleteAllNotes" class="button">Send all notes!</button>');
       getNotes(data._id);
     });
 });
@@ -79,8 +79,7 @@ $(document).on("click", "#deleteAllNotes", function(){
     .done(function(data) {
       console.log("Data: " + data);
     });
-
- //remove the values entered in the #bodyinput 
+//remove the values entered in the #bodyinput 
   $("#bodyinput").val("");
   $("#allnotes").empty();
 });
@@ -90,7 +89,7 @@ $(document).on("click", ".deleter", function(){
   
   $("#allnotes").empty();
   
-//save the <span> and <p> tag that are parents of the .deleter button
+//save the <span> and <p> tag that are parents of the delete button
   var selected = $(this).parent();     // the <span>
   var selectedp = selected.parent();   // the <p>
 // save the article id from the <p> tag of that note
@@ -105,7 +104,7 @@ $(document).on("click", ".deleter", function(){
     method: "GET",
     url: "/delete/" + thisNoteId
   })
- //remove the deleted note from the #allnotes div
+ //remove the deleted note from the #allnotes 
     .done(function( data ) {
       selectedp.remove();
     });

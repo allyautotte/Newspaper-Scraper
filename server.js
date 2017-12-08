@@ -9,6 +9,7 @@ var Article = require("./models/Article.js");
 var Note = require("./models/Note.js");
 var Promise = require('bluebird');
 mongoose.Promise=Promise;
+var PORT = process.env.PORT || 5000;
 
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({
@@ -17,7 +18,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 // configure database
-mongoose.connect("");
+mongoose.connect("mongodb://localhost/Newspaper-Scraper");
 var db = mongoose.connection;
 
 db.on("error", function(err) {
@@ -36,7 +37,7 @@ app.get("/", function(req, res) {
 //request to load html 
 app.get("/scrape", function(req, res) {
 	console.log("Scraping the latest and greatest...");
-	request("http://www.reddit.com", function(error, response, html) {
+	request("https://www.reddit.com", function(error, response, html) {
 		var $ = cheerio.load(html);
 		$("p.title").each(function(i, element) {
 			var result = {};
@@ -122,7 +123,7 @@ app.get("/deleteall/:id", function(req, res) {
 	  })
 });
 
-var PORT = process.env.PORT || 3000;
+
 app.listen(PORT, function() {
 	console.log("App listening on port " + PORT);
 });
