@@ -5,7 +5,10 @@
   <title>Newspaper Scraper</title>
   <style>
     body{
-      background-color: #F2F6D0   }
+    background-image:url('http://web.chessdailynews.com/wp-content/uploads/2015/03/general_news3.jpg') !important;
+    background-size: cover !important;
+    }
+
     #wrapper{
       width:960px;
       margin: 0 auto;
@@ -14,7 +17,7 @@
     #articles{
       width:59%;
       height:800px;
-      background-color: #FCF5C7;
+      background-color: white;
       border: 1px solid #808080;
       display:inline-block;
       overflow: auto;
@@ -25,7 +28,7 @@
       float:right;
     }
     #allnotes{
-      background-color: #FCF5C7;
+      background-color: white;
       border: 1px solid #808080;
       height:300px;
       font-size: 18px;
@@ -41,8 +44,16 @@
       width:30%;
       float:right;
     }
-    h1, h2, h3 {
+    h1 {
       text-align: center;
+      text-shadow: 2px 2px white;
+      font-size: 50px;
+    }
+    h2, h3 {
+      color: white;
+      text-align: center;
+      text-shadow: 2px 2px black;
+      letter-spacing: 2px;
     }
     p {
       margin-top: 0px;
@@ -66,7 +77,7 @@
       display:inline-block;
       width:96%;
       margin: 0 auto;
-      background-color: #FCF5C7;
+      background-color: white;
       border: 1px solid #808080;
       height:200px;
       font-size: 18px;
@@ -86,7 +97,7 @@
 <body>
   <div id="wrapper">
     <h1>HOT FRESH NEWS!</h1>
-    <h2><i>Get all the latest and greatest news from reddit.com</i></h2>
+    <h2>Get all the latest and greatest news from <i>reddit.com</i></h2>
     <div id="scraper"><button id="goScrape" class="button"><b>GO</b></button></div>
 
     <div id="headlineTitle"><br><h3>HOT RIGHT NOW:</h3></div>

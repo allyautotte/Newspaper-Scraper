@@ -8,6 +8,12 @@ function getNotes(data) {
 	})
 }
 
+$(document).on('click', 'a', function(e){
+  e.preventDefault();
+  var url = $(this).attr('href');
+  window.open(url, '_blank');
+});
+
 //click for GET request to scrape
 $(document).on("click", "#goScrape", function() {
 	$.ajax({
@@ -37,10 +43,10 @@ $(document).on('click', 'p', function(){
   })
     .done(function(data) {
       console.log(data);
-      $('#notes').append('<h2>' + data.title + '</h2>'); 
+      // $('#notes').append('<h2>' + data.title + '</h2>'); 
       $('#notes').append('<textarea id="bodyinput"></textarea>'); 
-      $('#notes').append('<button data-id="' + data._id + '" id="saveNote" class="button">Post it!</button>');
-      $('#notes').append('<button data-id="' + data._id + '" id="deleteAllNotes" class="button">Send all notes!</button>');
+      $('#notes').append('<button data-id="' + data._id + '" id="saveNote" class="button">Post</button>');
+      $('#notes').append('<button data-id="' + data._id + '" id="deleteAllNotes" class="button">Send</button>');
       getNotes(data._id);
     });
 });
@@ -92,10 +98,8 @@ $(document).on("click", ".deleter", function(){
 //save the <span> and <p> tag that are parents of the delete button
   var selected = $(this).parent();     // the <span>
   var selectedp = selected.parent();   // the <p>
-// save the article id from the <p> tag of that note
   var thisId = selectedp.attr("data-id");
   console.log("thisId: " + thisId);
-// save the note id from the <span> tag of that note
   var thisNoteId = selected.attr("note-id");
   console.log("thisNoteId: " + thisNoteId);
 

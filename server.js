@@ -9,7 +9,7 @@ var Article = require("./models/Article.js");
 var Note = require("./models/Note.js");
 var Promise = require('bluebird');
 mongoose.Promise=Promise;
-var PORT = process.env.PORT || 5000;
+var PORT = process.env.PORT || 8000;
 
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({
