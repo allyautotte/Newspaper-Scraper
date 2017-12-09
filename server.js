@@ -18,7 +18,8 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 // configure database
-mongoose.connect("mongodb://localhost/Newspaper-Scraper");
+// mongoose.connect("mongodb://localhost/Newspaper-Scraper");
+mongoose.connect("mongodb://heroku_wsk47rhg:59go0i6p3d7ihtpj7bg2eloh4g@ds133796.mlab.com:33796/heroku_wsk47rhg");
 var db = mongoose.connection;
 
 db.on("error", function(err) {
