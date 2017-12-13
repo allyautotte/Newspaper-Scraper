@@ -7,7 +7,7 @@ var request = require("request");
 var cheerio = require("cheerio");
 var Article = require("./models/Article.js");
 var Note = require("./models/Note.js");
-var Promise = require('bluebird');
+var Promise = require("bluebird");
 mongoose.Promise=Promise;
 var PORT = process.env.PORT || 8000;
 
@@ -19,7 +19,8 @@ app.use(express.static("public"));
 
 // configure database
 // mongoose.connect("mongodb://localhost/Newspaper-Scraper");
-mongoose.connect("mongodb://heroku_wsk47rhg:59go0i6p3d7ihtpj7bg2eloh4g@ds133796.mlab.com:33796/heroku_wsk47rhg");
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+mongoose.connect(MONGODB_URI);
 var db = mongoose.connection;
 
 db.on("error", function(err) {
